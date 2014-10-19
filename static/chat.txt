@@ -1,13 +1,70 @@
-allora
-[Sat Sep 08 2012 01:33]
-pippo: 123
-[Sat Sep 08 2012 01:34]
-pippo: 123
-[Sat Sep 08 2012 01:39]
-pippo: ciao
-[Sat Sep 08 2012 01:39]
-pippo: come va?
-[Sat Sep 08 2012 01:40]
-pluto: bene?
-[Sat Sep 08 2012 01:40]
-pluto: bene
+﻿<br>[Sun Oct 19 2014 22:18]
+user1: primo messaggio
+<br>[Sun Oct 19 2014 22:18]
+user1: secondo messaggio
+<br>[Sun Oct 19 2014 22:19]
+externalUser: messaggio2
+<br>[Sun Oct 19 2014 22:19]
+zorro: e gia
+<br>[Sun Oct 19 2014 22:20]
+zorro: prova
+<br>[Sun Oct 19 2014 22:20]
+pippo: prova2
+<br>[Sun Oct 19 2014 22:21]
+zorro: prova3
+<br>[Sun Oct 19 2014 22:29]
+zorro: messaggio 8
+<br>[Sun Oct 19 2014 22:30]
+zorro: messaggio 9
+<br>[Sun Oct 19 2014 22:31]
+pippo: messaggio10
+<br>[Sun Oct 19 2014 22:31]
+pluto : messaggio 11
+<br>[Sun Oct 19 2014 22:32]
+zorro: msg 12
+<br>[Sun Oct 19 2014 22:32]
+pluto : qqqq
+<br>[Sun Oct 19 2014 22:37]
+externalUser: allora
+<br>[Sun Oct 19 2014 22:37]
+zorro: pero
+<br>[Sun Oct 19 2014 22:38]
+externalUser: because of my shoes I wearing today???
+<br>[Sun Oct 19 2014 22:38]
+zorro: yeeeeee
+<br>[Sun Oct 19 2014 22:38]
+externalUser: I'm in your head
+<br>[Sun Oct 19 2014 22:38]
+zorro: tellminauu
+<br>[Sun Oct 19 2014 22:51]
+zorro: yee to vaaa
+<br>[Sun Oct 19 2014 22:52]
+pippo: allooooora
+<br>[Sun Oct 19 2014 22:52]
+zorro: o mama lietovaaaa
+<br>[Sun Oct 19 2014 22:53]
+zorro: qwqw
+<br>[Sun Oct 19 2014 22:56]
+zorro: treni
+<br>[Sun Oct 19 2014 22:56]
+pippo: allooooora
+<br>[Sun Oct 19 2014 22:56]
+zorro: ragioniere
+<br>[Sun Oct 19 2014 23:01]
+zorro: curmaier
+<br>[Sun Oct 19 2014 23:01]
+pippo: alloooooraholidays
+<br>[Sun Oct 19 2014 23:02]
+pippo: alloooooraholidays2
+<br>[Sun Oct 19 2014 23:02]
+zorro: zaza
+<br>[Sun Oct 19 2014 23:02]
+zorro: zaza
+<br>[Sun Oct 19 2014 23:02]
+<br>[Sun Oct 19 2014 23:02]
+zorro: zaza
+zorro: zaza
+<br>[Sun Oct 19 2014 23:02]
+zorro: zaza
+<br>[Sun Oct 19 2014 23:02]
+zorro: zaza

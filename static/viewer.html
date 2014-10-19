@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script type="text/javascript">
+
+function clearField(){
+  document.forms[0].msg.value = "";
+}
+function Ajax(){
+var xmlHttp;
+	try{	
+		xmlHttp=new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
+	}
+	catch (e){
+		try{
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
+		}
+		catch (e){
+		    try{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch (e){
+				alert("No AJAX!?");
+				return false;
+			}
+		}
+	}
+
+xmlHttp.onreadystatechange=function(){
+	if(xmlHttp.readyState==4){
+	    //var messages = xmlHttp.responseText;
+		//var displayMessages = messages.substring(messages.lastIndexOf("<br>")-500,messages.length);
+		var messages = xmlHttp.responseText.split("<br>");
+		var last10 = messages.slice(messages.length - 10);
+		var displayMessages = last10.join('<br>');
+		document.getElementById('ReloadThis').innerHTML=displayMessages;
+		setTimeout('Ajax()',5000);
+	}
+}
+xmlHttp.open("GET","./chat.txt",true);
+xmlHttp.send(null);
+}
+
+
+
+
+window.onload=function(){	
+	setTimeout('Ajax()',3000);
+}
+
+
+</script>
+
+<div id="ReloadThis">loading chat...</div>
+<hr>
+<form id='myForm' action="http://127.0.0.1:8081/chat" method="get" onSubmit="setTimeout('clearField();',2500);">
+  User Name: <input type="text" name="uid"><br>
+  Message: <input id="idmsg" type="text" name="msg">
+  <input type="submit" value="Submit" >
+</form>
+
+</body>
+</html>

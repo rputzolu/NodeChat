@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+//todo: modify refreshMessages to use Server-Sent-Events
+//todo: the server should return only last n messages
+//todo: function to create new XMLHttpRequests
+
+function refreshMessages(){
+	var xmlHttp;
+	try{	
+		xmlHttp=new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
+	}
+	catch (e){
+		try{
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
+		}
+		catch (e){
+		    try{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch (e){
+				alert("No AJAX!?");
+				return false;
+			}
+		}
+	}
+
+	xmlHttp.onreadystatechange=function(){
+		if(xmlHttp.readyState==4){
+			var messages = xmlHttp.responseText.split("<br>");
+			var last10 = messages.length > 11 ? messages.slice(messages.length - 10) : messages;
+			var displayMessages = last10.join('<br>');
+			document.getElementById('ReloadThis').innerHTML=displayMessages;
+			setTimeout('refreshMessages()',3000);
+		}
+	}
+	xmlHttp.open("GET","./chat.txt",true);
+	xmlHttp.send(null);
+}
+
+function sendMessage()
+{
+	var xmlhttp;
+	var user = document.getElementById('userid').value;
+	var message = document.getElementById('msg').value;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function(){
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			if(xmlhttp.responseText=='ok'){			
+				document.getElementById('msg').value = '';
+			}
+		}
+	}
+	xmlhttp.open("GET","http://127.0.0.1/chat?uid=" + user + "&msg=" + message ,true);
+	xmlhttp.send();
+}
+
+window.onload=function(){	
+	refreshMessages();
+}
+</script>
+
+<div id="ReloadThis">loading chat...</div>
+<hr>
+User Name: <input  id="userid" type="text"><br>
+Message: <input id="msg" type="text">
+<button type="button" onclick="sendMessage()">Send</button>
+</body>
+</html>

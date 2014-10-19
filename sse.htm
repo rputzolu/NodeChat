@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Server-Sent Events Demo</title>
+  <meta charset="UTF-8" />
+  <script>
+    window.addEventListener("load", function() {
+      var output = document.getElementById("output");
+      var source;
+
+      function connect() {
+        source = new EventSource("stream");
+        source.addEventListener("message", function(event) {
+          output.textContent = event.data;
+        }, false);
+      } //function connect
+
+      if (!!window.EventSource) {
+        connect();
+      }
+    }, false);
+  </script>
+</head>
+<body>
+  <span id="output"></span>
+</body>
+</html>

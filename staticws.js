@@ -13,21 +13,31 @@ my_http.createServer(function (request, response) {
             response.end();
         }
         else {
-            filesys.readFile(full_path, "binary", function (err, file) {
-                if (err) {
-                    response.writeHeader(500, { "Content-Type": "text/plain" });
-                    response.write(err + "\n");
-                    response.end();
+            //chek if path contains /static/
+            if (full_path.indexOf('static') > -1) {
 
-                }
-                else {
-                    response.writeHeader(200);
-                    response.write(file, "binary");
-                    response.end();
-                }
+                filesys.readFile(full_path, "binary", function (err, file) {
+                    if (err) {
+                        response.writeHeader(500, { "Content-Type": "text/plain" });
+                        response.write(err + "\n");
+                        response.end();
 
-            });
+                    }
+                    else {
+                        //ToDo: Dinamic content
+                        response.writeHeader(200);
+                        response.write(file, "binary");
+                        response.end();
+                    }
+                });
+            }
+            else {
+                response.writeHeader(404, { "Content-Type": "text/plain" });
+                response.write("404 Dinamic content not allowed\n");
+                response.end();
+            }
         }
     });
-}).listen(8080);
-sys.puts("Server Running on 8080");  
+//}).listen(process.env.PORT);
+}).listen(8081);
+sys.puts("Server Running on" + process.env.PORT);  
