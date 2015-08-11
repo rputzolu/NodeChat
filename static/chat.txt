@@ -24,3 +24,21 @@ pippo: aaa
 megaloman73: ciaoooooo
 <br>[Tue Aug 11 2015 10:03]
 qqq: ssss
+<br>[Tue Aug 11 2015 12:13]
+megaloman73: hello everybody
+<br>[Tue Aug 11 2015 12:30]
+aaa: bbb
+<br>[Tue Aug 11 2015 12:30]
+[object HTMLInputElement]: [object HTMLInputElement]
+<br>[Tue Aug 11 2015 12:31]
+[object HTMLInputElement]: [object HTMLInputElement]
+<br>[Tue Aug 11 2015 12:32]
+[object HTMLInputElement]: [object HTMLInputElement]
+<br>[Tue Aug 11 2015 12:34]
+pippo: ciao
+<br>[Tue Aug 11 2015 12:35]
+pippo: 1234
+<br>[Tue Aug 11 2015 12:35]
+pippo: 5678
+<br>[Tue Aug 11 2015 12:36]
+pluto: allora!

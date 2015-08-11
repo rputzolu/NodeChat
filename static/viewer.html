@@ -7,46 +7,50 @@
 function clearField(){
   document.forms[0].msg.value = "";
 }
-function Ajax(){
-var xmlHttp;
-	try{	
-		xmlHttp=new XMLHttpRequest();// Firefox, Opera 8.0+, Safari
-	}
-	catch (e){
-		try{
-			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
-		}
-		catch (e){
-		    try{
-				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			catch (e){
-				alert("No AJAX!?");
-				return false;
-			}
-		}
-	}
 
-xmlHttp.onreadystatechange=function(){
-	if(xmlHttp.readyState==4){
-	    //var messages = xmlHttp.responseText;
-		//var displayMessages = messages.substring(messages.lastIndexOf("<br>")-500,messages.length);
-		var messages = xmlHttp.responseText.split("<br>");
-		var last10 = messages.slice(messages.length - 10);
-		var displayMessages = last10.join('<br>');
-		document.getElementById('ReloadThis').innerHTML=displayMessages;
-		setTimeout('Ajax()',5000);
+var xmlhttp = [];
+function ajaxGet(requestedUrl, callbackFunction, channel){
+
+	if (window.XMLHttpRequest){
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp[channel]=new XMLHttpRequest();
 	}
+	else{
+		// code for IE6, IE5
+		xmlhttp[channel]=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp[channel].onreadystatechange=callbackFunction;
+	xmlhttp[channel].open("GET",requestedUrl,true);
+	xmlhttp[channel].send();
 }
-xmlHttp.open("GET","./chat.txt",true);
-xmlHttp.send(null);
+
+function getMessages(){
+	ajaxGet("./chat.txt",function(){
+		if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
+			var messages = xmlhttp[0].responseText.split("<br>");
+	 		var last10 = messages.slice(messages.length - 10);
+			var displayMessages = last10.join('<br>');
+	 		document.getElementById('ReloadThis').innerHTML=displayMessages;
+	 		setTimeout('getMessages()',5000);
+		}			
+	},0);
 }
 
 
+function sendMessage(){
+	var uid = document.getElementById('uid').value;
+	var msg = document.getElementById('idmsg').value;
+	ajaxGet('https://firstproj-mercatino73.c9.io/chat?uid=' +  uid + '&msg=' + msg,function(){
+				if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
+					clearField();
+					console.log(xmlhttp[1].responseText);
+				}
+	},1);
+}
 
 
 window.onload=function(){	
-	setTimeout('Ajax()',3000);
+	setTimeout('getMessages()',3000);
 }
 
 
@@ -54,11 +58,16 @@ window.onload=function(){
 
 <div id="ReloadThis">loading chat...</div>
 <hr>
-<form id='myForm' action="https://firstproj-mercatino73.c9.io/chat" method="get" onSubmit="setTimeout('clearField();',2500);">
-  User Name: <input type="text" name="uid"><br>
+<form id='myForm'>
+  User Name: <input type="text" name="uid" id="uid"><br>
   Message: <input id="idmsg" type="text" name="msg">
-  <input type="submit" value="Submit" >
+  
+
+  <!--input type="submit" value="Submit" -->
 </form>
 
+
+<button onclick="sendMessage();">send message</button>
+  
 </body>
 </html>
