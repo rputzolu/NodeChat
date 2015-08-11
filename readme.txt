@@ -5,9 +5,6 @@ Run the client: https://firstproj-mercatino73.c9.io/static/viewer.html
 
 insert message from querystring--> https://firstproj-mercatino73.c9.io/chat?uid=megaloman73&msg=hello everybody
 
-todo --> modify viewer.html to insert messages via ajax 
-
-
 todo --> implement long running pattern:  EventSource()
 
 example: 
@@ -57,3 +54,6 @@ Response.Flush()
 %>
 
 
+Test sse Examples: 
+sse.htm + sse_server.js
+sse-node.html + test_sse_server.js

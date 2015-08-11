@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>sse-node</title>
+  <meta charset="utf-8" />
+  <script>
+    var source = new EventSource('/events');
+    source.onmessage = function(e) {
+    document.getElementById('content').innerHTML += e.data + '<br>';
+    };
+  </script>
+</head>
+<body>
+<div id='content'></div>  
+</body>
+</html>
