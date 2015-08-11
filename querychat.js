@@ -80,7 +80,7 @@ else
  //   response.end();
 
 }
-}).listen(8081);
-console.log("Server Running on 8081");  
+}).listen(process.env.PORT, process.env.IP);
+console.log("Server running at" +  process.env.IP + ":" + process.env.PORT);
 
 
