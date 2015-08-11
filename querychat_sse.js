@@ -41,7 +41,7 @@ else
                 }
             });
 }
-}).listen(80, "127.0.0.1");
-console.log("Server running at http://127.0.0.1:80");
+}).listen(process.env.PORT, process.env.IP);
+console.log("Server running at" +  process.env.IP + ":" + process.env.PORT);
 
 

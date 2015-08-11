@@ -35,7 +35,11 @@ function refreshMessages(){
 			setTimeout('refreshMessages()',3000);
 		}
 	}
-	xmlHttp.open("GET","./chat.txt",true);
+	var str = window.location.href
+	var arr = str.split("\/");
+	var filename = arr[arr.length-1];
+	var path = str.replace(filename,"");
+	xmlHttp.open("GET",path + "/chat.txt",true);
 	xmlHttp.send(null);
 }
 
@@ -59,7 +63,12 @@ function sendMessage()
 			}
 		}
 	}
-	xmlhttp.open("GET","http://127.0.0.1/chat?uid=" + user + "&msg=" + message ,true);
+	
+	var str = window.location.href
+	var arr = str.split("\/");
+	var filename = arr[arr.length-1];
+	var path = str.replace(filename,"");
+	xmlhttp.open("GET",path + "chat?uid=" + user + "&msg=" + message ,true);
 	xmlhttp.send();
 }
 
