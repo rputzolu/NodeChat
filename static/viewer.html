@@ -43,7 +43,7 @@ function sendMessage(){
 	ajaxGet('https://firstproj-mercatino73.c9.io/chat?uid=' +  uid + '&msg=' + msg,function(){
 				if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
 					clearField();
-					console.log(xmlhttp[1].responseText);
+					//console.log(xmlhttp[1].responseText);
 				}
 	},1);
 }
