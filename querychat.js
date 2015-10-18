@@ -17,7 +17,7 @@ my_http.createServer(function (request, response) {
     var fs = require('fs');
     var staticpath = path.join(process.cwd(), 'static');
 	//var staticpath = path.join("http://127.0.0.1:8080/", 'static');
-	console.log(staticpath + ' ' + my_path); 
+	console.log(staticpath + ' ' + my_path);
 	var stream = fs.createWriteStream(path.join(staticpath, my_path + '.txt'), { 'flags': 'a' });
     var d = new Date();
 	if(query['msg']!= undefined) {
@@ -34,7 +34,7 @@ my_http.createServer(function (request, response) {
             response.end();
         }
         else {
-			
+
             fs.readFile(full_path, "binary", function (err, file) {
                 if (err) {
                     response.writeHeader(500, { "Content-Type": "text/plain" });
@@ -74,13 +74,14 @@ else
 
             });
 	//###
-	
-	
+
+
  //   response.write(filename);
  //   response.end();
 
 }
-}).listen(process.env.PORT, process.env.IP);
-console.log("Server running at" +  process.env.IP + ":" + process.env.PORT);
-
+// }).listen(process.env.PORT, process.env.IP);
+// console.log("Server running at" +  process.env.IP + ":" + process.env.PORT);
+}).listen(3500, '0.0.0.0');
+console.log("Server running at" +  3500 + ":" + '0.0.0.0');
 
