@@ -2,7 +2,25 @@
 <html>
 <head>
 <title>viewer</title>
-
+<style>
+.enjoy-css {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 0 50% 0 0;
+  padding: 10px;
+  border: none;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  font: normal 16px/1 "Comic Sans MS", cursive, sans-serif;
+  color: black;
+  text-indent: 10px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: #fff5d1;
+  text-shadow: 4px 4px 6px rgba(0,0,0,0.5) ;
+}
+</style>
 
 
 
@@ -68,7 +86,7 @@ function sendMessage(){
 
 
 window.onload=function(){
-	setTimeout('getMessages()',10000);
+	setTimeout('getMessages()',3000);
 }
 
 
@@ -78,7 +96,7 @@ window.onload=function(){
 </script>
 </head>
 <body  onLoad="loaduid()">
-<div id="ReloadThis">loading chat...</div>
+<div id="ReloadThis" class="enjoy-css">loading chat...</div>
 <hr>
 <form id='myForm'>
   User Name: <input type="text" name="uid" id="uid"><br>
