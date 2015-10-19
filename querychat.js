@@ -2,7 +2,7 @@ var my_http = require("http"),
 path = require("path"),
 url = require("url");
 
-my_http.createServer(function (request, response) {
+var server = my_http.createServer(function (request, response) {
     console.log("I got kicked");
     var url_parts = url.parse(request.url, true);
     var my_path = url_parts.pathname.toString();
@@ -82,6 +82,8 @@ else
 }
 // }).listen(process.env.PORT, process.env.IP);
 // console.log("Server running at" +  process.env.IP + ":" + process.env.PORT);
-}).listen(3500, '0.0.0.0');
-console.log("Server running at" +  3500 + ":" + '0.0.0.0');
+})//.listen(3500, '0.0.0.0');
+//console.log("Server running at" +  3500 + ":" + '0.0.0.0');
+var port = Number(process.env.PORT || 3500);
+server.listen(port);
 
