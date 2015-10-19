@@ -59,13 +59,13 @@ function ajaxGet(requestedUrl, callbackFunction, channel){
 }
 
 function getMessages(){
-	ajaxGet("http://ubuntu-136379.nitrousapp.com:3500/static/chat.txt",function(){
+	ajaxGet("https://togu-chat-test.herokuapp.com/static/chat.txt",function(){
 		if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
 			var messages = xmlhttp[0].responseText.split("<br>");
 	 		var last10 = messages.slice(messages.length - 10);
 			var displayMessages = last10.join('<br>');
 	 		document.getElementById('ReloadThis').innerHTML=displayMessages;
-	 		setTimeout('getMessages()',10000);
+	 		setTimeout('getMessages()',8000);
 		}
 	},0);
 }
@@ -76,7 +76,7 @@ function sendMessage(){
 
 	var uid = document.getElementById('uid').value;
 	var msg = document.getElementById('idmsg').value;
-	ajaxGet('http://ubuntu-136379.nitrousapp.com:3500/chat?uid=' +  uid + '&msg=' + msg,function(){
+	ajaxGet('https://togu-chat-test.herokuapp.com/chat?uid=' +  uid + '&msg=' + msg,function(){
 				if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
 					clearField();
 					//console.log(xmlhttp[1].responseText);
