@@ -2,7 +2,7 @@
   "name": "firstProj",
   "version": "0.0.0",
   "description": "simple nodejs chat",
-  "main": "querychat.js",
+  "main": "chatserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
