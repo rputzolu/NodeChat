@@ -22,10 +22,7 @@
 }
 </style>
 
-
-
 <script type="text/javascript">
-
 function saveuid() {
 	var fieldValue = document.getElementById('uid').value;
 	localStorage.setItem('textuid', fieldValue);
@@ -59,7 +56,8 @@ function ajaxGet(requestedUrl, callbackFunction, channel){
 }
 
 function getMessages(){
-	ajaxGet("/static/chat.txt",function(){
+  uid = document.getElementById('uid').value;
+	ajaxGet("../chat?action=get&uid=" + uid,function(){
 		if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
 			var messages = xmlhttp[0].responseText.split("<br>");
 	 		var last10 = messages.slice(messages.length - 10);
@@ -76,7 +74,7 @@ function sendMessage(){
 
 	var uid = document.getElementById('uid').value;
 	var msg = document.getElementById('idmsg').value;
-	ajaxGet('../chat?uid=' +  uid + '&msg=' + msg,function(){
+	ajaxGet('../chat?action=send&uid=' +  uid + '&msg=' + msg,function(){
 				if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
 					clearField();
 					//console.log(xmlhttp[1].responseText);

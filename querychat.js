@@ -1,6 +1,4 @@
-var my_http = require("http"),
-path = require("path"),
-url = require("url");
+var my_http = require("http"), path = require("path"), url = require("url");
 
 var server = my_http.createServer(function (request, response) {
     console.log("I got kicked");
