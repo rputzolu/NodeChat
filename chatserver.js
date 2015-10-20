@@ -21,10 +21,17 @@ var server = my_http.createServer(function (request, response) {
               msg['nikname']=query.uid ;
               msg['message']=query.msg ;
               messages.data.push(msg);
+              if(messages.data.length>10){
+                messages.data.shift();
+              }
+              //console.log("data " + JSON.stringify(messages));
             }
+            response.writeHeader(200);
+            response.write('');
+            response.end();
         break;
     case 'get':
-        console.log(query);
+        //console.log(query);
         if(query['lastMsg']!=undefined){
             lastMsg=parseInt(query['lastMsg']);
             newMessages=messages.data.filter(function (el) {
@@ -39,6 +46,7 @@ var server = my_http.createServer(function (request, response) {
         response.writeHeader(200);
         response.write(JSON.stringify(newMessages));
         response.end();
+
         //todo
         break;
     }
