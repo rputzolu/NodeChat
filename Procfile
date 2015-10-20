@@ -1,1 +1,1 @@
-web: node querychat.js
+web: node chatserver.js
