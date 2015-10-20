@@ -23,6 +23,7 @@
 </style>
 
 <script type="text/javascript">
+var lastMsg=0;
 function saveuid() {
 	var fieldValue = document.getElementById('uid').value;
 	localStorage.setItem('textuid', fieldValue);
@@ -57,13 +58,21 @@ function ajaxGet(requestedUrl, callbackFunction, channel){
 
 function getMessages(){
   uid = document.getElementById('uid').value;
-	ajaxGet("../chat?action=get&uid=" + uid,function(){
+	ajaxGet("../chat?action=get&uid=" + uid +'&lastMsg=' + lastMsg,function(){
 		if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
-			var messages = xmlhttp[0].responseText.split("<br>");
-	 		var last10 = messages.slice(messages.length - 10);
-			var displayMessages = last10.join('<br>');
-	 		document.getElementById('ReloadThis').innerHTML=displayMessages;
-	 		setTimeout('getMessages()',8000);
+      messages=JSON.parse(xmlhttp[0].responseText);
+      messages.forEach(function(entry) {
+        document.getElementById('ReloadThis').innerHTML += entry['nikname'] + ': '+entry['message'] + '<br>'
+        console.log(entry);
+        lastMsg = parseInt(entry['msgIndex']);
+
+      });
+      setTimeout('getMessages()',8000);
+			//var messages = xmlhttp[0].responseText.split("<br>");
+	 		//var last10 = messages.slice(messages.length - 10);
+			//var displayMessages = last10.join('<br>');
+	 		//document.getElementById('ReloadThis').innerHTML=displayMessages;
+	 		//setTimeout('getMessages()',8000);
 		}
 	},0);
 }
