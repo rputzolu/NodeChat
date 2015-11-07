@@ -3,6 +3,7 @@ node ./querychat.js  (nodejs ./querychat.js)
 
 Run the client (c9): https://firstproj-mercatino73.c9.io/static/viewer.html
 Run the client (Nitrous): http://ubuntu-136379.nitrousapp.com:3500/static/viewer.html
+Run the client (Nitrous): http://ubuntu-136379.nitrousapp.com:3500/static/chatclient.html
 
 insert message from querystring--> https://firstproj-mercatino73.c9.io/chat?uid=megaloman73&msg=hello everybody
 

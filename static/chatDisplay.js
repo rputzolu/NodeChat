@@ -30,7 +30,7 @@
 				_myself = ColorPicker;
 				_inheritsFrom(_myself, _super);
 				function ColorPicker(){
-					_super.call(this, [ '#EEFFEE','#FFFFEE', '#DDDDEE', '#EEFFFF','#FFEEEE','#99FFCC','#66CCFF','#CCFF99']);
+					_super.call(this, [ '#DDFFDD', '#DDDDFF','#FFFFDD', '#DDFFFF','#FFEEEE','#99FFCC','#66CCFF','#CCFF99']);
 				};
 				return _myself;
 			})(CircularArray);
@@ -74,16 +74,28 @@
 									this._userSettings[mb[i].nikname] = divStyleObj;
 								}
 								var el = document.createElement( 'div' );
-								el.innerHTML = mb[i].message;
+								//el.innerHTML = mb[i].message;
                 el.className = "enjoy-css";
 							//	el.style.left=divStyleObj['leftPerc']+'%';
                 el.style.marginLeft = divStyleObj['leftPerc']+'%';
                 el.style.marginRight = 50 - parseInt(divStyleObj['leftPerc'])+'%';
 								el.style['background-color'] = divStyleObj['bgColor'];
 								this._container.appendChild(el);
+                //header
+                var head = document.createElement( 'div' );
+                head.innerHTML = mb[i].nikname;
+                head.style.color = '#bbbbbb';
+                head.style.top= 0;
+				        head.style.position= 'relative';
+                head.style.textAlign= 'center';
+				        head.style.fontFamily= 'Verdava, Arial';
+				        head.style.fontSize= '10px';
+                head.style.textShadow= 'none';
+                el.appendChild(head);
+                el.innerHTML += mb[i].message;
 							}
 							else{
-								this._container.lastChild.innerHTML += mb[i].message;
+								this._container.lastChild.innerHTML += '<br>' + mb[i].message;
 							}
 							this._lastUser = mb[i].nikname;
 						}

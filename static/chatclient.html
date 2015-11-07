@@ -21,9 +21,12 @@
   background: #fff5d1;
   text-shadow: 4px 4px 6px rgba(0,0,0,0.5) ;
 }
+#ReloadThis {
+  overflow: auto;
+   max-height: 50vh;
+}
 </style>
 <script src="chatDisplay.js"></script>
-
 </head>
 <body  onLoad="loaduid()">
 <div id="ReloadThis" ></div>
@@ -31,12 +34,7 @@
 <form id='myForm'>
   User Name: <input type="text" name="uid" id="uid"><br>
   Message: <textarea id="idmsg" type="text" name="msg"  cols="40" rows="5" ></textarea>
-
-
-  <!--input type="submit" value="Submit" -->
 </form>
-
-
 <button onclick="sendMessage();">send message</button>
 <script type="text/javascript">
 var lastMsg=0;
@@ -59,7 +57,6 @@ function clearField(){
 var xmlhttp = [];
 var cd = new ChatDisplay('ReloadThis');
 function ajaxGet(requestedUrl, callbackFunction, channel){
-
 	if (window.XMLHttpRequest){
 		// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp[channel]=new XMLHttpRequest();
@@ -77,52 +74,36 @@ function getMessages(){
   uid = document.getElementById('uid').value;
 	ajaxGet("../chat?action=get&uid=" + uid +'&lastMsg=' + lastMsg,function(){
 		if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
-
       messages=JSON.parse(xmlhttp[0].responseText);
       cd.update(xmlhttp[0].responseText);
       console.log(messages);
       if(messages.length>0){
         lastMsg =  parseInt(messages[messages.length -1]['msgIndex']);
       }
-      /*
-      messages=JSON.parse(xmlhttp[0].responseText);
-      console.log(xmlhttp[0].responseText);
-      messages.forEach(function(entry) {
-        document.getElementById('ReloadThis').innerHTML += entry['nikname'] + ': '+entry['message'] + '<br>'
-        console.log(entry);
-        lastMsg = parseInt(entry['msgIndex']);
 
-      });
-      */
+      var elem = document.getElementById('ReloadThis');
+      elem.scrollTop = elem.scrollHeight;
       setTimeout('getMessages()',8000);
-			//var messages = xmlhttp[0].responseText.split("<br>");
-	 		//var last10 = messages.slice(messages.length - 10);
-			//var displayMessages = last10.join('<br>');
-	 		//document.getElementById('ReloadThis').innerHTML=displayMessages;
-	 		//setTimeout('getMessages()',8000);
 		}
 	},0);
 }
 
-
 function sendMessage(){
-	saveuid();
-
-	var uid = document.getElementById('uid').value;
-	var msg = document.getElementById('idmsg').value;
-	ajaxGet('../chat?action=send&uid=' +  uid + '&msg=' + msg,function(){
-				if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
-					clearField();
-					//console.log(xmlhttp[1].responseText);
-				}
-	},1);
+  var msg = document.getElementById('idmsg').value;
+  if(msg!=''){
+    saveuid();
+    var uid = document.getElementById('uid').value;
+    ajaxGet('../chat?action=send&uid=' +  uid + '&msg=' + msg,function(){
+          if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
+            clearField();
+          }
+    },1);
+  }
 }
-
 
 window.onload=function(){
 	setTimeout('getMessages()',3000);
 }
-
 </script>
 </body>
 </html>
