@@ -99,7 +99,7 @@
         margin: 0px;
     }
     #ReloadThis {
-        height: 100%;
+        height: 70%;
   }
 
 </style>
@@ -187,20 +187,8 @@ function sendMessage(){
     ajaxGet('../chat?action=send&uid=' +  uid + '&msg=' + msg,function(){
           if (xmlhttp[0].readyState==4 && xmlhttp[0].status==200){
             clearField();
-
           }
     },1);
-
-    //Todo: add message to cd (ChatDisplay) and increment lastMsg global variable
-//     myLastMsg = new Array();
-//     msg1 = new Object();
-//     msg1['msgIndex']=lastMsg+1;
-//     msg1['nikname']=uid ;
-//     msg1['message']=msg ;
-//     myLastMsg.data.push(msg1);
-//     cd.update(JSON.stringify(myLastMsg));
-//     lastMsg+=1;
-
   }
 }
 
