@@ -178,6 +178,7 @@ function sendMessage(){
   saveuid();
   var uid = document.getElementById('uid').value;
   var msg = document.getElementById('idmsg').value;
+  msg=msg.replace(/(?:\r\n|\r|\n)/g, '<br />');
   cd.update('[{"msgIndex":' + lastMsg +  ',"nikname":"'+ uid +'","message":"' + msg + '"}]');
   lastMsg += 1;
 
